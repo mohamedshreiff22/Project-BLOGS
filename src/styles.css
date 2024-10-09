@@ -1,0 +1,30 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  font-family: Lato, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+:root {
+  --bg-color: #fff;
+  --text-color: #73736f;
+  --main-color: #baa892;
+}
+body.custom-background {
+  /* background: linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
+    ),
+    url("/DALL·E 2024-10-04 04.31.26 - A stunning background image for a travel website, showcasing a wide landscape of iconic travel destinations. The image features a combination of tropi.webp"); */
+  background-image: url("/DALL·E 2024-10-04 04.31.26 - A stunning background image for a travel website, showcasing a wide landscape of iconic travel destinations. The image features a combination of tropi.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
