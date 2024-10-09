@@ -1,157 +1,66 @@
-.card {
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+/*-- gallery section --*/
+
+#gallery {
+  height: auto;
+  width: 100%;
+  padding: 6rem 0rem;
+}
+
+#gallery .card {
+  display: block;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(254, 249, 231, 0.16), 0 2px 10px 0 rgba(254, 249, 231, 0.12);
+  transition: box-shadow .25s;
+}
+
+#gallery .card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0,
+      0,
+      0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#gallery .img-card {
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  display: block;
   overflow: hidden;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-}
-
-.card-img-top {
+#gallery .img-card img {
   width: 100%;
-  height: auto;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  height: 100%;
+  object-fit: cover;
+  transition: all .25s ease;
 }
 
-.badge {
-  font-size: 0.875rem;
-  padding: 0.25rem 0.75rem;
+#gallery .card-content {
+  padding: 15px;
+  text-align: left;
 }
 
-.position-relative {
-  position: relative;
-}
-
-.position-absolute {
-  position: absolute;
-}
-
-.bottom-0 {
-  bottom: 0;
-}
-
-.end-0 {
-  right: 0;
-}
-
-.start-0 {
-  left: 0;
-}
-
-.mb-9 {
-  margin-bottom: 1.5rem;
-}
-
-.ms-9 {
-  margin-left: 1.5rem;
-}
-
-.p-4 {
-  padding: 1.5rem;
-}
-
-.fs-2 {
-  font-size: 1rem;
-}
-
-.fs-5 {
-  font-size: 1.25rem;
-}
-
-.fw-semibold {
-  font-weight: 600;
-}
-
-.gap-2 {
-  gap: 0.5rem;
-}
-
-.gap-4 {
-  gap: 1rem;
-}
-
-.link-primary {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.link-primary:hover {
-  text-decoration: underline;
-}
-
-img.rounded-circle {
-  border: 2px solid white;
-}
-
-.card-body {
-  background-color: #fff;
-  border-radius: 0 0 10px 10px;
-}
-/* button */
-/* From Uiverse.io by alexmaracinaru */
-.cta {
-  position: relative;
-  margin: auto;
-  padding: 12px 18px;
-  transition: all 0.2s ease;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.cta:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  border-radius: 50px;
-  background: #b1dae7;
-  width: 45px;
-  height: 45px;
-  transition: all 0.3s ease;
-}
-
-.cta span {
-  position: relative;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 18px;
+#gallery .card-title {
+  margin-top: 0px;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  color: #234567;
+  font-size: 1.65em;
 }
 
-.cta svg {
-  position: relative;
-  top: 0;
-  margin-left: 10px;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke: #234567;
-  stroke-width: 2;
-  transform: translateX(-5px);
-  transition: all 0.3s ease;
+#gallery .card-title a {
+  color: #000;
+  text-decoration: none !important;
 }
 
-.cta:hover:before {
-  width: 100%;
-  background: #b1dae7;
+.card-read-more {
+  border-top: 1px solid #D4D4D4;
 }
 
-.cta:hover svg {
-  transform: translateX(0);
-}
-
-.cta:active {
-  transform: scale(0.95);
-}
-/* new add to button */
-.button {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
+.card-read-more a {
+  text-decoration: none !important;
+  padding: 10px;
+  font-weight: 600;
+  text-transform: uppercase
 }
