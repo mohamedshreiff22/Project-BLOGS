@@ -1,0 +1,186 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Container{
+    display:flex ;
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-height: 100vh;
+}
+footer{
+    position: relative;
+    width: 100%;
+    background: #3586ff;
+    
+}
+  /*Motion*/
+footer .wave{
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background:url(wave.png);
+    background-size: 1000px 100px;
+}
+footer .wave#wave1{
+    opacity: 1;
+    bottom: 0;
+    animation: motion1 4s linear infinite;
+}
+@keyframes motion1 {
+    0%{
+        background-position-x:1000px ;
+    }
+    100%{
+        background-position-x:0px ;
+    }
+    }
+footer .wave#wave2{
+    opacity: 0.5;
+    bottom: 10px;
+    animation: motion2 4s linear infinite;
+}
+footer .wave#wave3{
+    opacity: 0.2;
+    bottom: 0;
+    animation: motion2 3s linear infinite;
+}
+footer .wave#wave4{
+    opacity: 0.7;
+    bottom: 20px;
+    animation: motion2 3s linear infinite;
+}
+
+    @keyframes motion2 {
+        0%{
+            background-position-x:0px ;
+        }
+        100%{
+            background-position-x:1000px ;
+        }
+}
+  /*Icons*/
+.FooterContainer{
+    padding: 70px 30px 20px ;
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+}
+.FooterContainer .icon{
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}
+.FooterContainer .icon span{
+    position: relative;
+    z-index: 2;
+    display: block;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 10px 10px rgb(0,0,0,0.1);
+}
+.FooterContainer .icon:hover span i{
+    color: white;
+}
+.FooterContainer .icon span i{
+    font-size: 25px;
+    line-height: 60px;
+}
+.FooterContainer .icon .tooltip {
+    position: absolute;
+    top: -70px;
+    border-radius: 25px;
+    font-size: 20px;
+    padding: 10px 18px;
+    pointer-events: none;
+    color: white;
+    box-shadow: 0 10px 10px rgb(0,0,0,0.1);
+    opacity: 0;
+    transition: all 0.2s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+.FooterContainer .icon:hover .tooltip{
+   opacity: 1;
+   pointer-events: auto;
+   top: -70px;
+}
+.FooterContainer .icon:hover span,
+.FooterContainer .icon:hover .tooltip{
+    text-shadow: 0px -1px 0px rgb(0, 0,0,0.4);
+}
+.FooterContainer .facebook:hover span,
+.FooterContainer .facebook:hover .tooltip{
+    background-color:#3B5999 ;
+}
+.FooterContainer .instagram:hover span,
+.FooterContainer .instagram:hover .tooltip{
+Background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af,#515bd4);;
+}
+.FooterContainer .twitter:hover span,
+.FooterContainer .twitter:hover .tooltip{
+    background-color:#46C1F6 ;
+}
+.FooterContainer .github:hover span,
+.FooterContainer .github:hover .tooltip{
+    background-color:#181717 ;
+}
+.FooterContainer .youtube:hover span,
+.FooterContainer .youtube:hover .tooltip{
+    background-color:#FF0000 ;
+}
+.FooterNav ul{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+.FooterNav ul li a {
+    color: rgb(14, 11, 11);
+    margin: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    opacity: 0.7;
+    transition: 0.5s;
+    
+}
+.FooterNav ul li a:hover{
+    opacity: 1;
+}
+.FooterBottom{
+    padding: 20px;
+    text-align: center;
+}
+.FooterBottom h3 {
+    color: white;
+}
+@media (max-width:700px) {
+    .FooterContainer {
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center; 
+    }
+    .FooterNav ul {
+        align-items: center;
+        justify-content: center; 
+        flex-direction: column;
+    }
+    FooterNav ui il{
+        width: 100%;
+        text-align: center;
+
+    }
+}
+
