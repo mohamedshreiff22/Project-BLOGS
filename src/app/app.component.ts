@@ -8,7 +8,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
-
+import { MoreDestinationsComponent } from './more-destinations/more-destinations.component';
+import { routes } from './app.routes';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -23,6 +24,7 @@ import { HomeComponent } from './home/home.component';
     ContactUsComponent,
     PageNotFoundComponent,
     HomeComponent,
+    MoreDestinationsComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

@@ -7,9 +7,12 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
+import { MoreDestinationsComponent } from './more-destinations/more-destinations.component';
+
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, title: 'Home' },
+  { path: 'more-destinations', component: MoreDestinationsComponent, title: 'More Destinations' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginFormComponent, title: 'Login' },
   { path: 'sign-up', component: SignUpComponent, title: 'SignUp' },
