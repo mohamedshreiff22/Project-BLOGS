@@ -3,7 +3,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { BlogsComponent } from './blogs/blogs.component';
+import { BlogDetailsComponent } from './Blog-details/Blog-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
@@ -16,7 +16,10 @@ export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginFormComponent, title: 'Login' },
   { path: 'sign-up', component: SignUpComponent, title: 'SignUp' },
-  { path: 'blogs', component: BlogsComponent, title: 'Blogs' },
+  { path: 'blog-details/:id',
+    component: BlogDetailsComponent,
+    title: 'Blog Details' },
+  { path: 'more-destinations', component: MoreDestinationsComponent },
   {
     path: 'user-profile',
     component: UserProfileComponent,

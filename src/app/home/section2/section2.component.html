@@ -3,15 +3,15 @@
       <h2 class="heading-tertiary text-center">Popular<span> Destinations</span></h2>
       <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-10 mx-auto">
-              <div class="card">
-                  <img class="card-img-top" src="assets/gallery-01.jpg" alt="Card image cap">
+              <div class="card"(click)="goToBlogDetails('las-vegas')">
+                <img class="card-img-top" src="assets/gallery-01.jpg" alt="Card image cap">
                   <div class="text-center">
                       <p>City, Las Vegas</p>
                   </div>
               </div>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-10 mx-auto">
-              <div class="card">
+              <div class="card"(click)="goToBlogDetails('london')">
                   <img class="card-img-top" src="assets/jakob-owens-Nrf3yY0kxCM-unsplash.jpg" alt="Card image cap">
                   <div class="text-center">
                       <p>Queen Elizabeth Tower, London</p>
@@ -19,7 +19,7 @@
               </div>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-10 mx-auto">
-              <div class="card">
+              <div class="card"(click)="goToBlogDetails('hawaii')">
                   <img class="card-img-top" src="assets/gallery-03.jpg" alt="Card image cap">
                   <div class="text-center">
                       <p>Mountains, Hawaii</p>
@@ -54,16 +54,10 @@
           </div>
       </div>
       <div class="center">
-        <button class="button signup-button" routerLink="/more-destinations">
+        <button (click)="navigateToMoreDestinations()" class="button signup-button">
           Read More
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              fill-rule="evenodd"
-              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
         </button>
+
       </div>
   </div>
 </section>
