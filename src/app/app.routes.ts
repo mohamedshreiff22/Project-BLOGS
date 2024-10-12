@@ -9,7 +9,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent, title: 'Home' },
+  { path: 'home', component: HomeComponent, title: 'Traveler' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginFormComponent, title: 'Login' },
   { path: 'sign-up', component: SignUpComponent, title: 'SignUp' },
