@@ -16,5 +16,9 @@ export class Section2Component {
     console.log('Navigating to more destinations');
     this.router.navigate(['/more-destinations']);
   }
+  goToBlogDetails(destinationId: string) {
+    console.log('Navigating to blog details for:', destinationId);
+    this.router.navigate(['/blog-details', destinationId]);
+  }
 }
 

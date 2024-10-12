@@ -16,7 +16,9 @@ export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginFormComponent, title: 'Login' },
   { path: 'sign-up', component: SignUpComponent, title: 'SignUp' },
-  { path: 'blog-details', component: BlogDetailsComponent, title: 'Blog Details' },
+  { path: 'blog-details/:id',
+    component: BlogDetailsComponent,
+    title: 'Blog Details' },
   { path: 'more-destinations', component: MoreDestinationsComponent },
   {
     path: 'user-profile',

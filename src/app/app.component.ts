@@ -9,6 +9,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { MoreDestinationsComponent } from './more-destinations/more-destinations.component';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, Inject } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -30,4 +33,17 @@ import { MoreDestinationsComponent } from './more-destinations/more-destinations
 })
 export class AppComponent {
   title = 'TravelerBlog';
+  constructor(private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd && isPlatformBrowser(this.platformId)) {
+        // تأكد أنك في بيئة المتصفح
+        window.scrollTo({
+          top: 0,
+          behavior: 'auto' // يمكنك تغييره إلى 'smooth' لتأثير الانسياب
+        });
+      }
+    });
+  }
 }
