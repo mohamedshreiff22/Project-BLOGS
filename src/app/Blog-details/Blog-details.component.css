@@ -9,6 +9,7 @@ body {
   text-align: left;
   background-color: #fff; }
 
+
 [tabindex="-1"]:focus {
   outline: 0 !important; }
 
@@ -170,7 +171,7 @@ select {
 button,
 [type="button"],
 [type="reset"],
-[type="submit"] 
+[type="submit"]
   ,
 
 button:not(:disabled),
@@ -195,7 +196,7 @@ input[type="checkbox"] {
 input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
-input[type="month"] 
+input[type="month"]
    ,
 
 textarea {
@@ -8320,11 +8321,11 @@ a[data-toggle="collapse"] {
 }
 إضافة مسافات بين الأقسام
 .social-plugin, .subscribe-us, .most-popular {
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
 }
 /* إذا كان هناك عناوين للأقسام */
 .social-plugin h3, .subscribe-us h3, .most-popular h3 {
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
 }
 
 .popular-blogs {
