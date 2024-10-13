@@ -11,7 +11,7 @@ import { MoreDestinationsComponent } from './more-destinations/more-destinations
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, title: 'Traveler' },
-  { path: 'home', component: HomeComponent, title: 'Home' },
+  { path: 'home', component: HomeComponent, title: 'Traveler' },
   {
     path: 'more-destinations',
     component: MoreDestinationsComponent,
