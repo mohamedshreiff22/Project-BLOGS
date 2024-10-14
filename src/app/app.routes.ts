@@ -12,10 +12,7 @@ import { MoreDestinationsComponent } from './more-destinations/more-destinations
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, title: 'Traveler' },
   { path: 'home', component: HomeComponent, title: 'Traveler' },
-  {
-    path: 'more-destinations',
-    component: MoreDestinationsComponent,
-    title: 'More Destinations',
+  { path: 'more-destinations',component: MoreDestinationsComponent, title: 'More Destinations',
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginFormComponent, title: 'Login' },
