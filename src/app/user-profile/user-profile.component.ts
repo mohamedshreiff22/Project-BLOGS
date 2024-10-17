@@ -62,7 +62,20 @@ export class UserProfileComponent implements OnInit {
       this.showSuccessMessage('تمت الإضافة بنجاح', 'تم إضافة البوست الجديد إلى المدونة');
       this.resetForm();
     }
+    Swal.fire({
+      title: 'تم التعديل بنجاح!',
+      text: 'تم تعديل الـبلوج بنجاح.',
+      icon: 'success',
+      confirmButtonText: 'موافق'
+    });
+    Swal.fire({
+      title: 'تمت الإضافة بنجاح!',
+      text: 'تم إضافة الـ Blog الجديد إلى المدونة.',
+      icon: 'success',
+      confirmButtonText: 'موافق'
+    });
   }
+
 
   editPost(post: any): void {
     this.newPostTitle = post.title;
@@ -145,5 +158,9 @@ export class UserProfileComponent implements OnInit {
     }
 
     return filtered;
+  }
+
+  get postsCount(): number {
+    return this.posts.length;
   }
 }

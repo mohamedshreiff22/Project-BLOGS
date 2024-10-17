@@ -25,6 +25,11 @@
     </button>
   </div>
 
+  <div class="stats-section">
+    <h3>إحصائيات المدونة</h3>
+    <p>عدد البوستات: {{ postsCount }}</p>
+  </div>
+
   <!-- Display Blog Posts -->
   <div class="row mt-5">
     <div class="col-md-4" *ngFor="let post of filteredAndSortedPosts">

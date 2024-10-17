@@ -111,3 +111,20 @@ h2 {
   margin-top: 20px; /* يمكنك تعديل المسافة حسب الحاجة */
 }
 
+.stats-section {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stats-section h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.stats-section p {
+  font-size: 1.2rem;
+  color: #333;
+}
