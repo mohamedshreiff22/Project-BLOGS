@@ -2,6 +2,12 @@
   <!-- Blog Posts Section -->
   <div class="posts-section">
     <h2 class="my-4">"Share your travel stories with the world."<i class="fa-light fa-plane"></i></h2>
+
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="ابحث عن بلوج" [(ngModel)]="searchTerm">
+    </div>
+
+
     <div class="form-group">
       <label for="postTitle">Post Title:</label>
       <input class="form-control" id="postTitle" [(ngModel)]="newPostTitle" name="postTitle" />
@@ -21,7 +27,7 @@
 
   <!-- Display Blog Posts -->
   <div class="row mt-5">
-    <div class="col-md-4" *ngFor="let post of posts">
+    <div class="col-md-4" *ngFor="let post of filteredAndSortedPosts">
       <div class="card mb-4 shadow-sm">
         <a [routerLink]="['/blog-details', post.id]">
           <img class="card-img-top" [src]="post.image || 'https://via.placeholder.com/350x150'" alt="Post Image" />

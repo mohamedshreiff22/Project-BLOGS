@@ -40,7 +40,15 @@ button {
 }
 
 .card {
-  height: auto; /* السماح للكارد بالتمدد ليتناسب مع المحتوى */
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease; /* لضمان حدوث الحركة بشكل سلس */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* الظل الافتراضي للكارد */
+}
+.card:hover {
+  transform: scale(1.05); /* تكبير الكارد قليلاً عند وضع الماوس */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* تغيير الظل عند التحريك */
 }
 
 .card-body {

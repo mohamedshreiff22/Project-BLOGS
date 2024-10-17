@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { isPlatformBrowser } from '@angular/common'; // استيراد isPlatformBrowser
 import { CommonModule } from '@angular/common';  // استيراد CommonModule
 import { RouterModule } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -75,7 +76,6 @@ export class UserProfileComponent implements OnInit {
     }
 }
 
-
   // دالة لتفعيل التعديل عند اختيار الكارد
   editPost(post: any): void {
     this.newPostTitle = post.title;
@@ -117,13 +117,83 @@ getUserPosts(): void {
   }
 }
 
-
-
-deletePost(postId: any): void {
-  let posts = JSON.parse(localStorage.getItem('posts') || '[]');
-  posts = posts.filter((post: any) => post.id !== postId);
-  localStorage.setItem('posts', JSON.stringify(posts));
-  this.getUserPosts(); // إعادة تحديث قائمة البوستات بعد الحذف
+deletePost(postId: number): void {
+  Swal.fire({
+    title: 'هل أنت متأكد؟',
+    text: "لن يمكنك التراجع بعد الحذف!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'نعم، احذف!',
+    cancelButtonText: 'إلغاء',
+    customClass: {
+      popup: 'custom-swal-popup',
+      title: 'custom-swal-title',
+      confirmButton: 'custom-swal-confirm-button',
+      cancelButton: 'custom-swal-cancel-button',
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // كود الحذف هنا
+      const storedPosts = localStorage.getItem('posts');
+      if (storedPosts) {
+        const posts = JSON.parse(storedPosts);
+        const updatedPosts = posts.filter((post: any) => post.id !== postId);
+        localStorage.setItem('posts', JSON.stringify(updatedPosts));
+        this.posts = updatedPosts; // تحديث العرض بعد الحذف
+      }
+      Swal.fire('تم الحذف!', 'تم حذف البوست بنجاح.', 'success');
+    }
+  });
 }
+
+searchTerm: string = ''; // خصائص البحث
+
+
+get filteredPosts() {
+  if (!this.searchTerm) {
+    return this.posts; // لو مفيش بحث اعرض الكل
+  }
+  return this.posts.filter(post =>
+    post.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+    post.content.toLowerCase().includes(this.searchTerm.toLowerCase())
+  );
+}
+
+sortBy: string = 'title'; // العنوان هو الافتراضي
+
+get sortedPosts() {
+  let sorted = [...this.posts]; // عمل نسخة من المصفوفة الأصلية
+
+  if (this.sortBy === 'title') {
+    sorted.sort((a, b) => a.title.localeCompare(b.title)); // ترتيب حسب العنوان
+  } else if (this.sortBy === 'date') {
+    sorted.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // ترتيب حسب التاريخ
+  }
+  return sorted;
+}
+
+get filteredAndSortedPosts() {
+  let filtered = this.posts;
+
+  // تطبيق الفلترة أولاً
+  if (this.searchTerm) {
+    filtered = filtered.filter(post =>
+      post.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      post.content.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+
+  // تطبيق الفرز بعد الفلترة
+  if (this.sortBy === 'title') {
+    filtered.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (this.sortBy === 'date') {
+    filtered.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  }
+
+  return filtered;
+}
+
 
 }
