@@ -1,7 +1,7 @@
 <div class="container">
   <!-- Blog Posts Section -->
   <div class="posts-section">
-    <h2 class="my-4">Your Blog Posts</h2>
+    <h2 class="my-4">"Share your travel stories with the world."<i class="fa-light fa-plane"></i></h2>
     <div class="form-group">
       <label for="postTitle">Post Title:</label>
       <input class="form-control" id="postTitle" [(ngModel)]="newPostTitle" name="postTitle" />
@@ -10,9 +10,9 @@
       <label for="postContent">Post Content:</label>
       <textarea class="form-control" [(ngModel)]="newPostContent" name="postContent"></textarea>
     </div>
-    <div class="form-group">
-      <label for="postImage">Upload Image:</label>
-      <input type="file" class="form-control-file" (change)="onFileSelected($event)" id="postImage" />
+    <div class="upload-btn-wrapper">
+      <button class="btn-custom">Upload Image</button>
+      <input type="file" id="postImage" (change)="onFileSelected($event)" />
     </div>
     <button class="btn btn-success" (click)="addPost()">
       {{ editingPostId ? 'Update Post' : 'Add Post' }}

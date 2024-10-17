@@ -7,8 +7,8 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css'],
+  templateUrl: '../user-profile/user-profile.component.html',
+  styleUrls: ['../user-profile/user-profile.component.css'],
   standalone: true,
   imports: [FormsModule, CommonModule,RouterModule]  // إضافة CommonModule هنا
 })
@@ -105,11 +105,15 @@ export class UserProfileComponent implements OnInit {
 
 
 getUserPosts(): void {
-  const storedPosts = localStorage.getItem('posts');
-  if (storedPosts) {
+  if (typeof window !== 'undefined') {
+    const storedPosts = localStorage.getItem('posts');
+    if (storedPosts) {
       this.posts = JSON.parse(storedPosts); // جلب البوستات من LocalStorage
-  } else {
+    } else {
       this.posts = []; // إذا لم تكن هناك بوستات
+    }
+  } else {
+    this.posts = []; // إذا كنت في بيئة SSR، سيتم تعيين قائمة فارغة مبدئيًا
   }
 }
 
@@ -121,4 +125,5 @@ deletePost(postId: any): void {
   localStorage.setItem('posts', JSON.stringify(posts));
   this.getUserPosts(); // إعادة تحديث قائمة البوستات بعد الحذف
 }
+
 }

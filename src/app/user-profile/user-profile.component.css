@@ -3,18 +3,6 @@
   margin: 0 auto;
 }
 
-.profile-section {
-  margin-bottom: 30px;
-}
-
-.profile-actions {
-  margin-top: 20px;
-}
-
-.posts-section {
-  margin-top: 50px;
-}
-
 .form-group {
   margin-bottom: 15px;
 }
@@ -44,17 +32,6 @@ button {
   margin: 5px;
 }
 
-.mb-4 {
-  margin-bottom: 1.5rem !important;
-}
-
-.mb-2 {
-  margin-bottom: 1rem !important;
-}
-
-.mt-5 {
-  margin-top: 3rem !important;
-}
 .card-text {
   white-space: nowrap;
   overflow: hidden;
@@ -72,3 +49,57 @@ button {
   justify-content: space-between;
   height: 100%;
 }
+
+.form-group {
+  margin-bottom: 15px; /* لإضافة مسافة بين الحقول */
+}
+
+.btn {
+  display: block; /* يجعل الزر يأخذ صف كامل */
+  width: 100%; /* يجعل عرض الزر 100% من العنصر الأب */
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn-custom {
+  border: 2px solid #4CAF50;
+  color: white;
+  background-color: #4CAF50;
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.upload-btn-wrapper input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 20px; /* يمكنك تعديل المسافة حسب الحاجة */
+}
+
