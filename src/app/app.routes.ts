@@ -10,32 +10,23 @@ import { HomeComponent } from './home/home.component';
 import { MoreDestinationsComponent } from './more-destinations/more-destinations.component';
 
 export const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, // إعادة التوجيه إلى الصفحة الرئيسية
   { path: 'home', component: HomeComponent, title: 'Traveler' },
-  { path: 'home', component: HomeComponent, title: 'Traveler' },
-  { path: 'more-destinations',component: MoreDestinationsComponent, title: 'More Destinations',
-  },
-
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'more-destinations', component: MoreDestinationsComponent, title: 'More Destinations' },
   { path: 'login', component: LoginFormComponent, title: 'Login' },
   { path: 'sign-up', component: SignUpComponent, title: 'SignUp' },
-  {
-    path: 'blog-details/:id',
-    component: BlogDetailsComponent,
-    title: 'Blog Details',
-  },
-  { path: 'more-destinations', component: MoreDestinationsComponent },
+  { path: 'contact-us', component: ContactUsComponent, title: 'Contact Us' },
+  { path: 'about', component: AboutComponent, title: 'About' },
+
+  // المسارات التي تحتوي على :id
+  { path: 'blog-details/:id', component: BlogDetailsComponent, title: 'Blog Details' },
+  { path: 'user-profile/:id', component: UserProfileComponent, title: 'User Profile' },
   {
     path: 'user-profile',
     component: UserProfileComponent,
-    title: 'User Profile',
+    title: 'User Profile'
   },
-  { path: 'contact-us', component: ContactUsComponent, title: 'Contact Us' },
-  { path: 'about', component: AboutComponent, title: 'About' },
+
+  // مسار الصفحة غير الموجودة
   { path: '**', component: PageNotFoundComponent },
-  { path: 'sign-up/login', redirectTo: '/login', pathMatch: 'full' },{ path: 'blogs', component: BlogDetailsComponent, title: 'Blog Details' },
-  {
-    path: 'user-profile/:id',
-    component: UserProfileComponent,
-    title: 'User Profile',
-  }
 ];

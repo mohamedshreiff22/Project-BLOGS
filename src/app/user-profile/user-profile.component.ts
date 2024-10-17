@@ -7,13 +7,13 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-profile',
-  templateUrl: '../user-profile/user-profile.component.html',
-  styleUrls: ['../user-profile/user-profile.component.css'],
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.css'],
   standalone: true,
   imports: [FormsModule, CommonModule, RouterModule]
 })
 export class UserProfileComponent implements OnInit {
-  user: any = { name: '', email: '' };
+  user: any = { name: 'Admin', email: '' }; // إضافة اسم المستخدم هنا
   posts: any[] = [];
   newPostTitle = '';
   newPostContent = '';
@@ -21,14 +21,14 @@ export class UserProfileComponent implements OnInit {
   successMessage: string = '';
   editMode: boolean = false;
   editingPostId: string | null = null;
-  searchTerm: string = '';
-  sortBy: string = 'title';
+  searchTerm: string = ''; // للبحث
+  sortBy: string = 'title'; // فرز حسب العنوان افتراضيًا
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      const storedData = localStorage.getItem('yourKey');
+      const storedData = localStorage.getItem('posts');
       console.log('Data from localStorage:', storedData);
     } else {
       console.log('Running on the server, localStorage is not available.');
@@ -44,8 +44,13 @@ export class UserProfileComponent implements OnInit {
         this.posts[postIndex].content = this.newPostContent;
         this.posts[postIndex].image = this.selectedFile;
 
-        this.updateLocalStorage();
-        this.showSuccessMessage('تم التعديل بنجاح', 'تم تعديل البوست بنجاح');
+        localStorage.setItem('posts', JSON.stringify(this.posts));
+        Swal.fire({
+          title: 'تم التعديل بنجاح!',
+          text: 'تم تعديل المدونة بنجاح.',
+          icon: 'success',
+          confirmButtonText: 'موافق'
+        });
         this.resetForm();
       }
     } else {
@@ -56,32 +61,50 @@ export class UserProfileComponent implements OnInit {
         date: new Date(),
         image: this.selectedFile
       };
-
       this.posts.push(newPost);
-      this.updateLocalStorage();
-      this.showSuccessMessage('تمت الإضافة بنجاح', 'تم إضافة البوست الجديد إلى المدونة');
+      localStorage.setItem('posts', JSON.stringify(this.posts));
+      Swal.fire({
+        title: 'تمت الإضافة بنجاح!',
+        text: 'تم إضافة المدونة الجديدة.',
+        icon: 'success',
+        confirmButtonText: 'موافق'
+      });
       this.resetForm();
     }
-    Swal.fire({
-      title: 'تم التعديل بنجاح!',
-      text: 'تم تعديل الـبلوج بنجاح.',
-      icon: 'success',
-      confirmButtonText: 'موافق'
-    });
-    Swal.fire({
-      title: 'تمت الإضافة بنجاح!',
-      text: 'تم إضافة الـ Blog الجديد إلى المدونة.',
-      icon: 'success',
-      confirmButtonText: 'موافق'
-    });
   }
 
+  resetForm() {
+    this.newPostTitle = '';
+    this.newPostContent = '';
+    this.selectedFile = null;
+    this.editingPostId = null;
+  }
 
   editPost(post: any): void {
     this.newPostTitle = post.title;
     this.newPostContent = post.content;
-    this.editingPostId = post.id;
     this.selectedFile = post.image;
+    this.editingPostId = post.id;
+  }
+
+  deletePost(postId: number): void {
+    Swal.fire({
+      title: 'هل أنت متأكد؟',
+      text: "لن يمكنك التراجع بعد الحذف!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'نعم، احذف!',
+      cancelButtonText: 'إلغاء'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updatedPosts = this.posts.filter((post: any) => post.id !== postId);
+        localStorage.setItem('posts', JSON.stringify(updatedPosts));
+        this.posts = updatedPosts;
+        Swal.fire('تم الحذف!', 'تم حذف المدونة بنجاح.', 'success');
+      }
+    });
   }
 
   onFileSelected(event: any): void {
@@ -98,47 +121,14 @@ export class UserProfileComponent implements OnInit {
   getUserPosts(): void {
     if (typeof window !== 'undefined') {
       const storedPosts = localStorage.getItem('posts');
-      this.posts = storedPosts ? JSON.parse(storedPosts) : [];
-    }
-  }
-
-  deletePost(postId: number): void {
-    Swal.fire({
-      title: 'هل أنت متأكد؟',
-      text: "لن يمكنك التراجع بعد الحذف",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'نعم، احذف',
-      cancelButtonText: 'إلغاء'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.posts = this.posts.filter((post: any) => post.id !== postId);
-        this.updateLocalStorage();
-        Swal.fire('تم الحذف!', 'تم حذف البوست بنجاح.', 'success');
+      if (storedPosts) {
+        this.posts = JSON.parse(storedPosts);
+      } else {
+        this.posts = [];
       }
-    });
-  }
-
-  updateLocalStorage(): void {
-    localStorage.setItem('posts', JSON.stringify(this.posts));
-  }
-
-  resetForm(): void {
-    this.editingPostId = null;
-    this.newPostTitle = '';
-    this.newPostContent = '';
-    this.selectedFile = null;
-  }
-
-  showSuccessMessage(title: string, text: string): void {
-    Swal.fire({
-      title,
-      text,
-      icon: 'success',
-      confirmButtonText: 'موافق'
-    });
+    } else {
+      this.posts = [];
+    }
   }
 
   get filteredAndSortedPosts() {
@@ -158,9 +148,5 @@ export class UserProfileComponent implements OnInit {
     }
 
     return filtered;
-  }
-
-  get postsCount(): number {
-    return this.posts.length;
   }
 }
