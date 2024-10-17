@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Blog</title>
+    <link rel="stylesheet" href="Editor.css">
+    <script src="https://cdn.tiny.cloud/1/2ccnz1kwhf26l24cd4cwdp75kn9p6vg97dh0vux2p8qd0l7s/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+    <h1>Share Your Travel Adventures and Let the World Read Your Journey</h1>
+
+    <div class="form-container">
+
+        <h2>Create a New Post</h2>
+        <div class="form-field">
+            <input type="text" id="post-title" placeholder="Post Title">
+        </div>
+        <div class="form-field">
+
+            <select id="post-category">
+                <option value="">Select Category</option>
+                <option value="Continents">Continents</option>
+                <option value="Countries">Countries</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <textarea id="editor"></textarea>
+        </div>
+        <button id="save-button">Save Post</button>
+    </div>
+
+    <!-- Posts Display Section -->
+
+    <div class="posts-section">
+        <h2>Blog Posts</h2>
+        <div class="filter-container">
+            <select id="filter-category">
+                <option value="">All Categories</option>
+                <option value="Continents">Continents</option>
+                <option value="Countries">Countries</option>
+            </select>
+        </div>
+        <div id="posts-list"></div>
+        
+    </div>
+    
+    <script src="Editor.js"></script>
+</body>
+</html>
