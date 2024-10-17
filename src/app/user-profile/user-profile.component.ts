@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { isPlatformBrowser } from '@angular/common'; // استيراد isPlatformBrowser
 import { CommonModule } from '@angular/common';  // استيراد CommonModule
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule]  // إضافة CommonModule هنا
+  imports: [FormsModule, CommonModule,RouterModule]  // إضافة CommonModule هنا
 })
 export class UserProfileComponent implements OnInit {
   user: any = { name: '', email: '' };
@@ -20,17 +22,18 @@ export class UserProfileComponent implements OnInit {
   editMode: boolean = false;
   editingPostId: string | null = null;
 
-  constructor(private userService: UserService) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { // إدخال PLATFORM_ID هنا
+  }
 
   ngOnInit(): void {
-    if (typeof window !== 'undefined') {
-      // يمكنك استخدام localStorage هنا فقط إذا كنت في المتصفح
+    if (isPlatformBrowser(this.platformId)) {
+      // فقط إذا كنا في بيئة المتصفح يمكنك استخدام localStorage
       const storedData = localStorage.getItem('yourKey');
       console.log('Data from localStorage:', storedData);
     } else {
       console.log('Running on the server, localStorage is not available.');
     }
-    this.getUserProfile();
+
     this.getUserPosts();
   }
 
@@ -101,16 +104,6 @@ export class UserProfileComponent implements OnInit {
 }
 
 
-
-  getUserProfile(): void {
-    const storedUser = localStorage.getItem('user'); // جلب البيانات من LocalStorage
-    if (storedUser) {
-        this.user = JSON.parse(storedUser); // تحويل النص إلى كائن JavaScript
-    } else {
-        this.user = { name: '', email: '' }; // إذا لم يكن هناك بيانات في LocalStorage
-    }
-}
-
 getUserPosts(): void {
   const storedPosts = localStorage.getItem('posts');
   if (storedPosts) {
@@ -128,20 +121,4 @@ deletePost(postId: any): void {
   localStorage.setItem('posts', JSON.stringify(posts));
   this.getUserPosts(); // إعادة تحديث قائمة البوستات بعد الحذف
 }
-
-  updateProfile(): void {
-    if (this.user) {
-        localStorage.setItem('user', JSON.stringify(this.user)); // تحديث البيانات في LocalStorage
-        alert('Profile updated successfully');
-    }
-}
-
-deleteProfile(): void {
-  localStorage.removeItem('userProfile');  // حذف بيانات البروفايل
-  localStorage.removeItem('posts'); // يمكن أيضًا حذف كل البوستات المرتبطة بالمستخدم
-  this.user = { name: '', email: '' };  // إعادة تعيين بيانات المستخدم
-  this.posts = [];  // إعادة تعيين البوستات
-}
-
-
 }

@@ -1,21 +1,4 @@
 <div class="container">
-  <!-- User Profile Section -->
-  <div class="profile-section">
-    <h2 class="mb-4">User Profile</h2>
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input [(ngModel)]="user.name" class="form-control" id="name" />
-    </div>
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input [(ngModel)]="user.email" class="form-control" id="email" />
-    </div>
-    <div class="profile-actions">
-      <button class="btn btn-primary" (click)="updateProfile()">Update Profile</button>
-      <button class="btn btn-danger" (click)="deleteProfile()">Delete Profile</button>
-    </div>
-  </div>
-
   <!-- Blog Posts Section -->
   <div class="posts-section">
     <h2 class="my-4">Your Blog Posts</h2>
@@ -31,37 +14,29 @@
       <label for="postImage">Upload Image:</label>
       <input type="file" class="form-control-file" (change)="onFileSelected($event)" id="postImage" />
     </div>
-    <button class="btn btn-success" (click)="addPost()">{{ editingPostId ? 'Update Post' : 'Add Post' }}</button>
+    <button class="btn btn-success" (click)="addPost()">
+      {{ editingPostId ? 'Update Post' : 'Add Post' }}
+    </button>
   </div>
 
   <!-- Display Blog Posts -->
   <div class="row mt-5">
     <div class="col-md-4" *ngFor="let post of posts">
       <div class="card mb-4 shadow-sm">
-        <img class="card-img-top" [src]="post.image || 'https://via.placeholder.com/350x150'" alt="Post Image" />
+        <a [routerLink]="['/blog-details', post.id]">
+          <img class="card-img-top" [src]="post.image || 'https://via.placeholder.com/350x150'" alt="Post Image" />
+        </a>
+
         <div class="card-body">
-          <ng-container *ngIf="editMode && editingPostId === post.id; else displayMode">
-            <!-- Editing mode for this post is true -->
-            <input class="form-control mb-2" [(ngModel)]="post.title" placeholder="Edit Post Title" />
-            <textarea class="form-control mb-2" [(ngModel)]="post.content" placeholder="Edit Post Content"></textarea>
-            <input type="file" class="form-control-file" (change)="onFileSelected($event)" id="postImage" />
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <button class="btn btn-success" (click)="savePost(post)">Save</button>
-              <button class="btn btn-secondary" (click)="cancelEdit(post)">Cancel</button>
-            </div>
-          </ng-container>
-          <ng-template #displayMode>
-            <!-- Display the post details if not in edit mode -->
             <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">{{ post.content }}</p>
+            <p class="card-text">{{ post.content }}</p> <!-- تقييد النص هنا فقط -->
             <small class="text-muted">Posted by: {{ user.name }}</small>
             <div class="d-flex justify-content-between align-items-center mt-3">
-              <button class="btn btn-info" (click)="editPost(post)">Edit Post</button>
-              <button class="btn btn-danger" (click)="deletePost(post.id)">Delete Post</button>
+                <button class="btn btn-info" (click)="editPost(post)">Edit Post</button>
+                <button class="btn btn-danger" (click)="deletePost(post.id)">Delete Post</button>
             </div>
-          </ng-template>
         </div>
-      </div>
+    </div>
     </div>
   </div>
 </div>

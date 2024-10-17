@@ -13,6 +13,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID, Inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { FormsModule } from '@angular/forms'; // استيراد FormsModule
+
 @Component({
   selector: 'app-root',
   standalone: true,

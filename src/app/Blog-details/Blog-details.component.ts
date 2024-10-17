@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -9,14 +9,14 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './Blog-details.component.html',
   styleUrl: './Blog-details.component.css'
 })
-export class BlogDetailsComponent {
+export class BlogDetailsComponent implements OnInit {
+  postId: string | null = null;
   constructor(private route: ActivatedRoute) {}
 
 
 
-  ngOnInit() {
-    const destinationId = this.route.snapshot.paramMap.get('id');
-    console.log('Destination ID:', destinationId);
-    window.scrollTo(0, 0);
+  ngOnInit(): void {
+    this.postId = this.route.snapshot.paramMap.get('id');
+    console.log('Post ID:', this.postId);
   }
 }

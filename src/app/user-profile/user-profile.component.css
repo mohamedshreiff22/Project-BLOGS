@@ -1,48 +1,74 @@
 .container {
-  margin-top: 30px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.profile-section, .posts-section {
+.profile-section {
   margin-bottom: 30px;
 }
 
+.profile-actions {
+  margin-top: 20px;
+}
+
+.posts-section {
+  margin-top: 50px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
 .card {
-  border-radius: 10px;
-  overflow: hidden;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .card-img-top {
-  height: 150px;
+  width: 100%;
+  height: 250px;
   object-fit: cover;
 }
 
 .card-body {
-  padding: 20px;
+  text-align: center;
 }
 
-.card-title {
-  font-size: 18px;
-  font-weight: bold;
+.d-flex {
+  display: flex;
+  justify-content: space-between;
 }
 
+button {
+  margin: 5px;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 1rem !important;
+}
+
+.mt-5 {
+  margin-top: 3rem !important;
+}
 .card-text {
-  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 50px; /* تحديد ارتفاع النص */
 }
 
-.text-muted {
-  font-size: 12px;
+.card {
+  height: auto; /* السماح للكارد بالتمدد ليتناسب مع المحتوى */
 }
 
-.btn-info {
-  background-color: #17a2b8;
-  border-color: #17a2b8;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  border-color: #dc3545;
-}
-
-.shadow-sm {
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
