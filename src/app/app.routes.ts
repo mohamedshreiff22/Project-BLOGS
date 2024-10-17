@@ -14,6 +14,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent, title: 'Traveler' },
   { path: 'more-destinations',component: MoreDestinationsComponent, title: 'More Destinations',
   },
+
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginFormComponent, title: 'Login' },
   { path: 'sign-up', component: SignUpComponent, title: 'SignUp' },
@@ -31,5 +32,10 @@ export const routes: Routes = [
   { path: 'contact-us', component: ContactUsComponent, title: 'Contact Us' },
   { path: 'about', component: AboutComponent, title: 'About' },
   { path: '**', component: PageNotFoundComponent },
-  { path: 'sign-up/login', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'sign-up/login', redirectTo: '/login', pathMatch: 'full' },{ path: 'blogs', component: BlogDetailsComponent, title: 'Blog Details' },
+  {
+    path: 'user-profile/:id',
+    component: UserProfileComponent,
+    title: 'User Profile',
+  }
 ];

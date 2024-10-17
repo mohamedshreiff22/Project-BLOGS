@@ -12,6 +12,7 @@ import { MoreDestinationsComponent } from './more-destinations/more-destinations
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID, Inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { FormsModule } from '@angular/forms'; // استيراد FormsModule
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -26,7 +27,7 @@ import { Router, NavigationEnd } from '@angular/router';
     ContactUsComponent,
     PageNotFoundComponent,
     HomeComponent,
-    MoreDestinationsComponent,
+    MoreDestinationsComponent,FormsModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
