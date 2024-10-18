@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>Data filtering</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        select, button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        #postList {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        p {
+            margin: 5px 0;
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        p:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Categorize posts by category</h1>
+    <select id="categorySelect">
+        <option value="">choose category</option>
+        <option value="snake">snake</option>
+        <option value="lifestyle">lifestyle</option>
+        <option value="health">health</option>
+        <option value="food">food</option>
+        <option value="breakfast">breakfast</option>
+    </select>
+    <button onclick="displayFilteredPosts()">filtering</button>
+    <div id="postList"></div>
+
+    <script>
+        
+
+        function displayFilteredPosts() {
+            const selectedCategory = document.getElementById("categorySelect").value;
+            const filteredPosts = filterPostsByCategory(selectedCategory);
+            const postList = document.getElementById("postList");
+            postList.innerHTML = filteredPosts.map(post => `<p>${post.title}</p>`).join('');
+        }
+    </script>
+</body>
+</html>
