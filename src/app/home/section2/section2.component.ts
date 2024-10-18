@@ -20,5 +20,6 @@ export class Section2Component {
     console.log('Navigating to blog details for:', destinationId);
     this.router.navigate(['/blog-details', destinationId]);
   }
+
 }
 

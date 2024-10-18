@@ -9,7 +9,7 @@
 
   <div class="author-date">by Admin • {{ blogDate }}</div>
 
-  <img [src]="blogImage" alt="Blog Image" *ngIf="blogImage">
+  <img src="{{ blogImage }}" alt="Blog Image" class="blog-image">
 
   <div class="content mt-4">
     <p>{{ blogContent }}</p>
