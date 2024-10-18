@@ -1,17 +1,75 @@
 <div class="container mt-5">
   <div class="breadcrumb">
-    Home / Blog / {{ blogTitle }}
+    <a href="/">Home</a> / Blog / <strong>{{ blogTitle }}</strong>
   </div>
 
-  <div class="title">
-    <h2>{{ blogTitle }}</h2>
-  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="blog-header mb-4">
+        <h2 class="blog-title">{{ blogTitle }}</h2>
+        <p class="text-muted">by Admin • {{ blogDate }}</p>
+      </div>
 
-  <div class="author-date">by Admin • {{ blogDate }}</div>
+      <div class="blog-image-container mb-4">
+        <img [src]="blogImage" alt="Blog Image" class="img-fluid rounded">
+      </div>
 
-  <img src="{{ blogImage }}" alt="Blog Image" class="blog-image">
+      <div class="blog-content mb-4">
+        <p>{{ blogContent }}</p>
+      </div>
 
-  <div class="content mt-4">
-    <p>{{ blogContent }}</p>
+      <!-- قسم التعليقات -->
+      <div class="comments-section mt-5">
+        <h3 class="mb-4">Comments</h3>
+
+        <!-- نموذج إضافة تعليق -->
+        <form (ngSubmit)="addComment()" class="mb-5">
+          <div class="form-group">
+            <input [(ngModel)]="newCommentName" name="newCommentName" placeholder="Your name" class="form-control mb-2" required>
+            <textarea [(ngModel)]="newComment" name="newComment" placeholder="Write your comment..." class="form-control mb-2" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Comment</button>
+        </form>
+
+        <!-- عرض التعليقات -->
+        <div *ngIf="comments.length > 0" class="all-comments-section">
+          <h4 class="mb-4">All Comments:</h4>
+          <div *ngFor="let comment of comments; let i = index; trackBy: trackByFn" class="comment-item mb-3 p-3 border rounded bg-light">
+            <div class="comment-header">
+              <strong [class.arabic-text]="isArabic(comment.name)" class="comment-name">{{ comment.name }}</strong> • <span class="text-muted">{{ comment.time }}</span>
+            </div>
+
+            <p *ngIf="!isEditing[i]" class="comment-text">{{ comment.text }}</p>
+
+            <!-- تعديل التعليق -->
+            <div *ngIf="isEditing[i]" class="form-group">
+              <textarea [(ngModel)]="comments[i].text" name="editComment-{{i}}" class="form-control mb-2"></textarea>
+              <button (click)="saveEdit(i)" class="btn btn-success btn-sm mr-2">Save</button>
+              <button (click)="cancelEdit(i)" class="btn btn-secondary btn-sm">Cancel</button>
+            </div>
+
+            <!-- أزرار تعديل وحذف -->
+            <div *ngIf="!isEditing[i]">
+              <button (click)="editComment(i)" class="btn btn-info btn-sm mr-2">Edit</button>
+              <button (click)="deleteComment(i)" class="btn btn-danger btn-sm">Delete</button>
+            </div>
+
+            <!-- أزرار الإعجاب وعدم الإعجاب -->
+            <div class="reaction-buttons mt-2">
+              <button (click)="likeComment(i)" class="btn btn-outline-primary btn-sm">
+                👍 Like ({{ comment.likes }})
+              </button>
+              <button (click)="dislikeComment(i)" class="btn btn-outline-danger btn-sm">
+                👎 Dislike ({{ comment.dislikes }})
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="comments.length === 0" class="mt-4">
+          <p class="text-muted">No comments yet. Be the first to comment!</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

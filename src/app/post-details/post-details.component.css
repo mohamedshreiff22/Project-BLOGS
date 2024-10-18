@@ -1,0 +1,21 @@
+.hero {
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.hero-text {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5); /* تأثير نصف شفاف */
+  padding: 20px;
+}
+
+.post-details {
+  padding: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+}
