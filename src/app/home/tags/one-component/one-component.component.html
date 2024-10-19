@@ -6,18 +6,36 @@
   <div class="meta">By Mohamed Blogging Tips &nbsp; • &nbsp; March 17, 2017</div>
   <img [src]="getImageUrl()" alt="{{ tag }}" class="main-image" height="400" width="800" />
   <div class="content">
-    <p>Here is some detailed information about {{ tag }}.</p>
+    <p>Sudden she seeing garret far regard. By hardly it direct if pretty up regret. Ability thought enquire settled prudent you sir. Or easy knew sold on we hold. Somewhat consulted age extremely and procuring.
+
+      Assistance imprudence yet sentiments
+      Mrs. fat be had sold sent park son spirit her entire
+      Do winding affronted oh
+      Introducing stimulated me to an unpleasing estimable acceptance so. Esteem longer evident gay nor design age. Am weather to entered norland no in showing service. Ability thought enquire settled prudent you sir.
+
+      If in so bred at dare rose lose good. Feel and make two real miss use easy. Blessing resolved peculiar fat graceful ham. Sussex on at really ladies in as elinor. On esteem it ye greatest so continued. Advice branch vanity or do thirty living. Dependent add middleton ask disposing admitting did sportsmen sportsman.
+      Sudden she seeing garret far regard. By hardly it direct if pretty up regret. Ability thought enquire settled prudent you sir. Or easy knew sold on we hold. Somewhat consulted age extremely and procuring.
+
+Assistance imprudence yet sentiments
+Mrs. fat be had sold sent park son spirit her entire
+Do winding affronted oh
+Introducing stimulated me to an unpleasing estimable acceptance so. Esteem longer evident gay nor design age. Am weather to entered norland no in showing service. Ability thought enquire settled prudent you sir.
+
+If in so bred at dare rose lose good. Feel and make two real miss use easy. Blessing resolved peculiar fat graceful ham. Sussex on at really ladies in as elinor. On esteem it ye greatest so continued. Advice branch vanity or do thirty living. Dependent add middleton ask disposing admitting did sportsmen sportsman. {{ tag }}.</p>
     <!-- Content -->
   </div>
 
   <div class="comments-section">
     <h2>Comments</h2>
     <div *ngIf="comments.length === 0">No comments yet.</div>
-    <div *ngFor="let comment of comments" class="comment">
-      <div class="comment-author">{{ comment.author }}</div>
-      <div class="comment-date">{{ comment.date }}</div>
-      <div class="comment-text">{{ comment.text }}</div>
-    </div>
+    <div *ngFor="let comment of comments; let i = index" class="comment">
+        <div class="comment-author">{{ comment.author }}</div>
+        <div class="comment-date">{{ comment.date }}</div>
+        <div class="comment-text">{{ comment.text }}</div>
+        <div class="comment-buttons">
+          <button class="edit" (click)="editComment(i)">Edit</button>
+          <button class="delete" (click)="deleteComment(i)">Delete</button>
+        </div>
   </div>
 
   <div class="add-comment">

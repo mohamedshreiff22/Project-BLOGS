@@ -4,7 +4,7 @@
   padding: 20px;
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .title {
@@ -27,18 +27,6 @@
   margin-bottom: 20px;
 }
 
-.content {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #444;
-}
-
-.comments-section {
-  margin-top: 30px;
-  border-top: 1px solid #e0e0e0;
-  padding-top: 20px;
-}
-
 .add-comment input,
 .add-comment textarea {
   width: 100%;
@@ -46,6 +34,7 @@
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 16px; /* حجم الخط */
 }
 
 .add-comment button {
@@ -55,4 +44,69 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* تأثيرات الانتقال */
+}
+
+.add-comment button:hover {
+  background-color: #0056b3; /* لون الخلفية عند التحويم */
+  transform: translateY(-2px); /* حركة خفيفة لأعلى */
+}
+
+.comments-section {
+  margin-top: 30px; /* إضافة مسافة فوق قسم التعليقات */
+}
+
+.comment {
+  margin-bottom: 20px; /* إضافة مسافة بين التعليقات */
+  padding: 15px; /* إضافة حشوة داخل التعليق */
+  border: 1px solid #e0e0e0; /* إضافة حدود خفيفة حول التعليق */
+  border-radius: 5px; /* حواف دائرية */
+  background-color: #f9f9f9; /* لون خلفية للتعليق */
+  display: flex; /* استخدام flex */
+  flex-direction: column; /* تعيين الاتجاه العمودي */
+}
+
+.comment-author {
+  font-weight: bold; /* جعل اسم المؤلف بارز */
+  color: #333; /* لون النص */
+}
+
+.comment-date {
+  font-size: 12px; /* حجم صغير للتاريخ */
+  color: #888; /* لون رمادي للتاريخ */
+  margin-bottom: 5px; /* إضافة مسافة فوق التاريخ */
+}
+
+.comment-buttons {
+  margin-top: 10px; /* إضافة مسافة فوق الأزرار */
+  display: flex; /* ترتيب الأزرار في صف */
+  justify-content: flex-start; /* محاذاة الأزرار إلى اليسار */
+}
+
+.comment-buttons button {
+  padding: 5px 10px; /* تقليل حجم الحشوة */
+  margin-right: 5px; /* إضافة مسافة بين الأزرار */
+  border: none; /* إزالة الحدود الافتراضية */
+  border-radius: 4px; /* حواف دائرية */
+  cursor: pointer; /* تغيير شكل المؤشر عند المرور فوق الأزرار */
+  font-size: 14px; /* حجم النص */
+  transition: background-color 0.3s; /* تأثيرات الانتقال */
+}
+
+.comment-buttons button.edit {
+  background-color: #007bff; /* لون خلفية زر التعديل */
+  color: white; /* لون نص الزر */
+}
+
+.comment-buttons button.edit:hover {
+  background-color: #0056b3; /* لون الخلفية عند التحويم */
+}
+
+.comment-buttons button.delete {
+  background-color: #dc3545; /* لون خلفية زر الحذف */
+  color: white; /* لون نص الزر */
+}
+
+.comment-buttons button.delete:hover {
+  background-color: #c82333; /* لون الخلفية عند التحويم */
 }
