@@ -37,6 +37,10 @@ export class UserProfileComponent implements OnInit {
   }
 
   addPost(): void {
+    if (typeof localStorage !== 'undefined') {
+      const data = localStorage.getItem('yourKey');
+      // التعامل مع البيانات
+  }
     if (this.editingPostId) {
       const postIndex = this.posts.findIndex((post) => post.id === this.editingPostId);
       if (postIndex !== -1) {

@@ -11,6 +11,13 @@ import { Router } from '@angular/router';
 export class Section2Component {
 
   constructor(private router: Router) {}
+  ngOnInit() {
+    if (typeof localStorage !== 'undefined') {
+        const data = localStorage.getItem('yourKey');
+        // التعامل مع البيانات
+    }
+}
+
 
   navigateToMoreDestinations() {
     console.log('Navigating to more destinations');

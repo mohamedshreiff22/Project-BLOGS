@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
 import { MoreDestinationsComponent } from './more-destinations/more-destinations.component';
+import { OneComponentComponent } from './home/tags/one-component/one-component.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // إعادة التوجيه إلى الصفحة الرئيسية
@@ -29,4 +30,5 @@ export const routes: Routes = [
 
   // مسار الصفحة غير الموجودة
   { path: '**', component: PageNotFoundComponent },
+  { path: 'one', component: OneComponentComponent },
 ];

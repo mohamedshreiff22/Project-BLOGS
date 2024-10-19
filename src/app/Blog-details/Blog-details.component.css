@@ -1,123 +1,123 @@
-.blog-image {
-  width: 65%;
-  /*اجعلالصورةتملأعرضالكارد*/height: 690px;
-  /*تعيينارتفاعثابتلجميعالصور*/object-fit: cover;
-  /*الحفاظعلىنسبةالعرضإلىالارتفاع*/border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius:10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+.hero {
+  position: relative;
+  height: 600px;
+  background-color: #000; /* اللون الاحتياطي */
+  color: #fff;
 }
 
-.blog-header {
+.hero-image {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
-.blog-title {
-  font-size: 2rem;
-  font-weight: bold;
+.hero-text h1 {
+  font-size: 3rem;
+  margin: 0;
 }
 
-.blog-image-container {
-  text-align: center;
+.hero-text h2 {
+  font-size: 1.5rem;
 }
 
-.blog-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+.container {
+  padding: 20px;
 }
 
 .blog-content {
   font-size: 1.2rem;
   line-height: 1.6;
+  margin-bottom: 30px;
 }
 
 .comments-section {
   margin-top: 50px;
 }
 
+.comment-form {
+  margin-bottom: 20px;
+}
+
+.comment-form input,
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.comment-form button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .comment-item {
   background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 10px;
   border-left: 4px solid #007bff;
 }
 
 .comment-header {
-  font-size: 1rem;
-  margin-bottom: 5px;
-}
-
-.comment-text {
-  font-size: 1.1rem;
-}
-
-button {
-  margin-right: 10px;
-}
-
-textarea {
-  resize: none;
-}
-
-.reaction-buttons {
   display: flex;
-  gap: 10px;
-}
-/* تنسيق اسم الشخص الذي يعلق */
-.comment-name {
-  font-size: 1.2rem;         /* حجم الخط */
-  color: #007bff;           /* لون مميز */
-  font-weight: bold;        /* خط عريض */
-  font-style: italic;       /* خط مائل */
-}
-
-/* تحسين عرض التعليقات */
-.comment-item {
-  background-color: #f9f9f9;
-  border-left: 4px solid #007bff;
-}
-
-.comment-header {
+  justify-content: space-between; /* يجعل الاسم والتاريخ في طرفين */
+  align-items: center;
   font-size: 1rem;
-  margin-bottom: 5px;
 }
 
-.comment-text {
-  font-size: 1.1rem;
-}
-
-button {
-  margin-right: 10px;
-}
-
-textarea {
-  resize: none;
-}
-
-.reaction-buttons {
-  display: flex;
-  gap: 10px;
-}
-/* تنسيق النص العربي */
-.arabic-text {
-  direction: rtl;       /* ضبط الكتابة من اليمين إلى اليسار */
-  text-align: right;    /* ضبط محاذاة النص إلى اليمين */
-  unicode-bidi: isolate; /* تحسين عرض النصوص المختلطة */
-  font-weight: bold;    /* خط عريض */
-  color: #007bff;       /* لون مميز */
-  font-size: 1.2rem;    /* حجم الخط */
-}
-
-/* تنسيق النصوص الأخرى */
 .comment-name {
-  font-size: 1.2rem;
   font-weight: bold;
-  color: #007bff;
+  direction: ltr; /* يجعل النص الإنجليزي في الاتجاه الصحيح */
 }
-.blog-content {
-  margin-bottom: 20px; /* قلل الفجوة بين المحتوى والأسفل */
+
+.comment-time {
+  color: #888;
+  font-size: 0.9rem;
 }
-.comments-section {
-  max-width: 800px;
-  margin: 0 auto; /* لتوسيط القسم */
+
+.comment-text {
+  margin-top: 10px;
+}
+
+.edit-comment {
+  margin-top: 10px;
+}
+
+.action-buttons {
+  margin-top: 10px;
+}
+
+.action-buttons button {
+  margin-right: 10px;
+}
+.edit-button,
+.delete-button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
 }

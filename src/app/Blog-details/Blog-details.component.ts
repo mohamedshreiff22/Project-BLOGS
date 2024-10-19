@@ -32,6 +32,10 @@ export class BlogDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {
+    if (typeof localStorage !== 'undefined') {
+      const data = localStorage.getItem('yourKey');
+      // التعامل مع البيانات
+  }
     const blogId = this.route.snapshot.paramMap.get('id');
     console.log('Blog ID:', blogId);
 
