@@ -1,47 +1,26 @@
-
-<div class="container">
-  <div class="title">
-   Popular
-   <span>
-    Tags
-   </span>
+<div class="tags">
+  <div class="tag-item" (click)="goToBlogDetails('health')">
+    <img src="assets/place-one.jpg" alt="Health" />
+    <span>#Health</span>
   </div>
-  <div class="tags">
-   <div class="tag-item">
-    <img alt="A table full of healthy food items" src="assets/gallery-01.jpg"/>
-    <span>
-     #Health
-    </span>
-   </div>
-   <div class="tag-item">
-    <img alt="A variety of food items including flowers" src="assets/place-one.jpg"/>
-    <span>
-     #Food
-    </span>
-   </div>
-   <div class="tag-item">
-    <img alt="A breakfast meal with a sandwich and fries" src="assets/place-three.jpg"/>
-    <span>
-     #Breakfast
-    </span>
-   </div>
-   <div class="tag-item">
-    <img alt="A delicious snack burger" src="assets/place-two.jpg"/>
-    <span>
-     #Snacks
-    </span>
-   </div>
-   <div class="tag-item">
-    <img alt="A healthy lifestyle meal with vegetables" src="assets/gallery-03.jpg"/>
-    <span>
-     #Lifestyle
-    </span>
-   </div>
-   <div class="tag-item">
-    <img alt="A plate of chocolate macarons" src="assets/gallery-04.jpg"/>
-    <span>
-     #Chocolate
-    </span>
-   </div>
+  <div class="tag-item" (click)="goToBlogDetails('food')">
+    <img src="assets/gallery-02.jpg" alt="Food" />
+    <span>#Food</span>
   </div>
- </div>
+  <div class="tag-item" (click)="goToBlogDetails('breakfast')">
+    <img src="assets/gallery-03.jpg" alt="Breakfast" />
+    <span>#Breakfast</span>
+  </div>
+  <div class="tag-item" (click)="goToBlogDetails('snacks')">
+    <img src="assets/gallery-04.jpg" alt="Snacks" />
+    <span>#Snacks</span>
+  </div>
+  <div class="tag-item" (click)="goToBlogDetails('lifestyle')">
+    <img src="assets/gallery-05.jpg" alt="Lifestyle" />
+    <span>#Lifestyle</span>
+  </div>
+  <div class="tag-item" (click)="goToBlogDetails('chocolate')">
+    <img src="assets/gallery-06.jpg" alt="Chocolate" />
+    <span>#Chocolate</span>
+  </div>
+</div>

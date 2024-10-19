@@ -1,73 +1,31 @@
 <div class="container">
   <div class="breadcrumb">
-   <a href="#">
-    Home
-   </a>
-   &gt;
-   <a href="#">
-    Health
-   </a>
-   &gt; The Only Travel Packing Checklist You'll Ever Need
+    <a href="#">Home</a> &gt; <a href="#">{{ tag }}</a> &gt; The Only Travel Packing Checklist You'll Ever Need
   </div>
-  <div class="title">
-   The Only Travel Packing Checklist You'll Ever Need
-  </div>
-  <div class="meta">
-   By Zara Blogging Tips   •   March 17, 2017
-  </div>
-  <div class="advertisement">
-   Responsive Advertisement
-  </div>
-  <img alt="Woman in yellow outfit with a yellow background" class="main-image" height="400" src="place-one.jpg" width="800"/>
+  <div class="title">{{ tag }} Details</div>
+  <div class="meta">By Mohamed Blogging Tips &nbsp; • &nbsp; March 17, 2017</div>
+  <img [src]="getImageUrl()" alt="{{ tag }}" class="main-image" height="400" width="800" />
   <div class="content">
-   <p>
-    It bachelor cheerful of mistaken. Tore has sons put upon wife use bred seen. Its dissimilar invitation ten has discretion unreserved. Had you him humoured jointure ask expenses learning. Blush on in jokes sense do do.
-   </p>
-   <div class="highlight">
-    <p>
-     Brother hundred he assured reached on up no. On nearer missed lovers. To it mother extent temper figure better.
-    </p>
-   </div>
-   <p>
-    Sudden she seeing garret far regard. By hardly it direct if pretty up regret. Ability thought enquire settled prudent you sir. Or easy knew sold on we hold. Somewhat consulted age extremely and procuring.
-   </p>
-   <ul>
-    <li>
-     Assistance imprudence yet sentiments
-    </li>
-    <li>
-     Mrs. fat be had sold sent park son spirit her entire
-    </li>
-    <li>
-     Do winding affronted oh
-    </li>
-   </ul>
-   <p>
-    Introducing stimulated me to an unpleasing estimable acceptance so. Esteem longer evident gay nor design age. Am weather to entered norland no in showing service. Ability thought enquire settled prudent you sir.
-   </p>
-   <p>
-    If in so bred at dare rose lose good. Feel and make two real miss use easy. Blessing resolved peculiar fat graceful ham. Sussex on at really ladies in as elinor. On esteem it ye greatest so continued. Advice branch vanity or do thirty living. Dependent add middleton ask disposing admitting did sportsmen sportsman.
-   </p>
+    <p>Here is some detailed information about {{ tag }}.</p>
+    <!-- Content -->
   </div>
+
   <div class="comments-section">
-   <h2>Comments</h2>
-   <div class="comment">
-    <div class="comment-author">John Doe</div>
-    <div class="comment-date">March 18, 2017</div>
-    <div class="comment-text">This is a very helpful checklist! Thanks for sharing.</div>
-   </div>
-   <div class="comment">
-    <div class="comment-author">Jane Smith</div>
-    <div class="comment-date">March 19, 2017</div>
-    <div class="comment-text">I always forget something when I travel. This list is a lifesaver!</div>
-   </div>
+    <h2>Comments</h2>
+    <div *ngIf="comments.length === 0">No comments yet.</div>
+    <div *ngFor="let comment of comments" class="comment">
+      <div class="comment-author">{{ comment.author }}</div>
+      <div class="comment-date">{{ comment.date }}</div>
+      <div class="comment-text">{{ comment.text }}</div>
+    </div>
   </div>
+
   <div class="add-comment">
-   <h3>Add a Comment</h3>
-   <form>
-    <input placeholder="Your Name" type="text"/>
-    <textarea placeholder="Your Comment" rows="5"></textarea>
-    <button type="submit">Submit</button>
-   </form>
+    <h3>Add a Comment</h3>
+    <form (submit)="submitComment(author.value, comment.value); author.value=''; comment.value=''">
+      <input #author placeholder="Your Name" type="text" required />
+      <textarea #comment placeholder="Your Comment" rows="5" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
   </div>
- </div>
+</div>
