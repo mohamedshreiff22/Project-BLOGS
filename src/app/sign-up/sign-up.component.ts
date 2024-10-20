@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common'; // إضافة هذه السطر
+import Swal from 'sweetalert2'; // استيراد SweetAlert2
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
   imports: [
-    ReactiveFormsModule,CommonModule, // تأكد من استيراد ReactiveFormsModule
+    ReactiveFormsModule, CommonModule, // تأكد من استيراد ReactiveFormsModule
   ],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
@@ -39,7 +40,11 @@ export class SignUpComponent {
 
       // تحقق مما إذا كان البريد الإلكتروني موجودًا مسبقًا في localStorage
       if (localStorage.getItem(email)) {
-        alert('هذا البريد الإلكتروني مسجل مسبقًا. يرجى تسجيل الدخول.');
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text: 'هذا البريد الإلكتروني مسجل مسبقًا. يرجى تسجيل الدخول.',
+        });
         this.router.navigate(['/login']); // الانتقال إلى صفحة تسجيل الدخول
         return; // عدم المتابعة
       }
@@ -47,7 +52,18 @@ export class SignUpComponent {
       // تخزين البيانات في localStorage
       localStorage.setItem(email, JSON.stringify(this.signUpForm.value));
       console.log('Registration successful!');
+      Swal.fire({
+        icon: 'success',
+        title: 'نجاح',
+        text: 'تم التسجيل بنجاح!',
+      });
       this.router.navigate(['/login']); // انتقل إلى صفحة تسجيل الدخول
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'تحذير',
+        text: 'يرجى ملء جميع الحقول المطلوبة بشكل صحيح.',
+      });
     }
   }
 }

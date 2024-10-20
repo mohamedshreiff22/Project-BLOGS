@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import Swal from 'sweetalert2'; // استيراد SweetAlert2
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [ReactiveFormsModule ],
+  imports: [ReactiveFormsModule],
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css'],
 })
@@ -31,12 +32,25 @@ export class LoginFormComponent {
         if (userData.password === password) {
           this.router.navigate(['/home']); // انتقل إلى الصفحة الرئيسية
         } else {
-          alert('Invalid email or password. Please try again.');
+          Swal.fire({
+            icon: 'error',
+            title: 'خطأ',
+            text: 'البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.',
+          });
         }
       } else {
-        alert('Invalid email or password. Please try again.');
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text: 'البريد الإلكتروني أو كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى.',
+        });
       }
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'تحذير',
+        text: 'يرجى ملء جميع الحقول المطلوبة بشكل صحيح.',
+      });
     }
   }
-
 }

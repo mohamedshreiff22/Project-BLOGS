@@ -1,41 +1,34 @@
-<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-  <div class="flex-column">
-    <label>Name</label>
-    <div class="inputForm">
-      <input formControlName="name" placeholder="Enter your Name" class="input" type="text" required />
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="form-container">
+  <h2>إنشاء حساب</h2>
+
+  <div class="form-group">
+    <label for="name">الاسم</label>
+    <input id="name" formControlName="name" placeholder="أدخل اسمك" class="input" type="text" required />
+  </div>
+
+  <div class="form-group">
+    <label for="email">البريد الإلكتروني</label>
+    <input id="email" formControlName="email" placeholder="أدخل بريدك الإلكتروني" class="input" type="email" required />
+    <div *ngIf="signUpForm.get('email')?.errors?.['email'] && signUpForm.get('email')?.touched" class="error-message">
+      يرجى إدخال بريد إلكتروني صحيح.
     </div>
   </div>
 
-  <div class="flex-column">
-    <label>Email</label>
-    <div class="inputForm">
-      <input formControlName="email" placeholder="Enter your Email" class="input" type="email" required />
-      <div *ngIf="signUpForm.get('email')?.errors?.['email'] && signUpForm.get('email')?.touched">
-        Please enter a valid email address.
-      </div>
+  <div class="form-group">
+    <label for="password">كلمة المرور</label>
+    <input id="password" formControlName="password" placeholder="أدخل كلمة المرور" class="input" type="password" required />
+    <div *ngIf="signUpForm.get('password')?.errors?.['minlength'] && signUpForm.get('password')?.touched" class="error-message">
+      يجب أن تكون كلمة المرور على الأقل 6 أحرف.
     </div>
   </div>
 
-  <div class="flex-column">
-    <label>Password</label>
-    <div class="inputForm">
-      <input formControlName="password" placeholder="Enter your Password" class="input" type="password" required />
-      <div *ngIf="signUpForm.get('password')?.errors?.['minlength'] && signUpForm.get('password')?.touched">
-        Password must be at least 6 characters long.
-      </div>
+  <div class="form-group">
+    <label for="confirmPassword">تأكيد كلمة المرور</label>
+    <input id="confirmPassword" formControlName="confirmPassword" placeholder="أعد إدخال كلمة المرور" class="input" type="password" required />
+    <div *ngIf="signUpForm.errors?.['mismatch'] && signUpForm.get('confirmPassword')?.touched" class="error-message">
+      كلمات المرور غير متطابقة.
     </div>
   </div>
 
-  <div class="flex-column">
-    <label>Confirm Password</label>
-    <div class="inputForm">
-      <input formControlName="confirmPassword" placeholder="Confirm your Password" class="input" type="password" required />
-      <div *ngIf="signUpForm.errors?.['mismatch'] && signUpForm.get('confirmPassword')?.touched">
-        Passwords do not match.
-      </div>
-
-    </div>
-  </div>
-
-  <button class="button-submit" type="submit">Sign Up</button>
+  <button class="button-submit" type="submit">إنشاء حساب</button>
 </form>
