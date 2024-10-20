@@ -1,44 +1,42 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  Renderer2,
-  Inject,
-  PLATFORM_ID,
-} from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [RouterModule],
+  imports: [ReactiveFormsModule ],
   templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.css',
+  styleUrls: ['./login-form.component.css'],
 })
-export class LoginFormComponent implements OnInit, OnDestroy {
-  constructor(
-    private router: Router,
-    private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: Object // Inject PLATFORM_ID to check if it's browser
-  ) {}
+export class LoginFormComponent {
+  loginForm: FormGroup;
 
-  goToSignup() {
-    this.router.navigate(['/sign-up']);
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
   }
 
-  ngOnInit() {
-    // Check if the platform is a browser before accessing the document
-    if (isPlatformBrowser(this.platformId)) {
-      this.renderer.addClass(document.body, 'custom-background');
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const email = this.loginForm.get('email')?.value;
+      const password = this.loginForm.get('password')?.value;
+
+      // تحقق من البيانات المخزنة في localStorage
+      const storedData = localStorage.getItem(email);
+      if (storedData) {
+        const userData = JSON.parse(storedData);
+        if (userData.password === password) {
+          this.router.navigate(['/home']); // انتقل إلى الصفحة الرئيسية
+        } else {
+          alert('Invalid email or password. Please try again.');
+        }
+      } else {
+        alert('Invalid email or password. Please try again.');
+      }
     }
   }
 
-  ngOnDestroy() {
-    // Check if the platform is a browser before accessing the document
-    if (isPlatformBrowser(this.platformId)) {
-      this.renderer.removeClass(document.body, 'custom-background');
-    }
-  }
 }

@@ -18,7 +18,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent, title: 'Traveler' },
   { path: 'more-destinations', component: MoreDestinationsComponent, title: 'More Destinations' },
   { path: 'login', component: LoginFormComponent, title: 'Login' },
-  { path: 'sign-up', component: SignUpComponent, title: 'Sign Up' },
+  { path: 'sign-up', component: SignUpComponent , title: 'Sign Up' },
   { path: 'contact-us', component: ContactUsComponent, title: 'Contact Us' },
   { path: 'about', component: AboutComponent, title: 'About' },
   { path: 'destination/:id', component: DetailComponent }, // تفاصيل الوجهة
