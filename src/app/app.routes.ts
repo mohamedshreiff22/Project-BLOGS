@@ -11,6 +11,7 @@ import { MoreDestinationsComponent } from './more-destinations/more-destinations
 import { OneComponent } from './home/tags/one-component/one-component.component';
 import { DetailComponent } from './detail/detail.component';
 import { BlogCardDetailsComponent } from './blog-card-details/blog-card-details.component';
+import { OriginalUserprofileComponent } from './original-userprofile/original-userprofile.component';
 
 
 export const routes: Routes = [
@@ -27,5 +28,6 @@ export const routes: Routes = [
   { path: 'user-profile', component: UserProfileComponent, title: 'User Profile' }, // ملف المستخدم بدون ID
   { path: 'one/:tag', component: OneComponent }, // المسار للكارد الواحد
   { path: 'blog-card-details/:id', component: BlogCardDetailsComponent },
+  { path: 'original-userprofile', component: OriginalUserprofileComponent },
   { path: '**', component: PageNotFoundComponent } // مسار الصفحة غير الموجودة
 ];
