@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="breadcrumb">
+    <a href="#">Home</a> &gt; <a href="#">{{ cardDetails.title }}</a>
+  </div>
+
+  <h1>{{ cardDetails.title }} Details</h1>
+  <div class="meta">By Mohamed Blogging Tips • March 17, 2017</div>
+  <img [src]="cardDetails.image" alt="{{ cardDetails.title }}" class="img-fluid">
+  <p>{{ cardDetails.description }}</p>
+
+  <div class="comments-section">
+    <h2>Comments</h2>
+
+    <!-- Display comments -->
+    <div *ngIf="comments.length === 0">No comments yet.</div>
+    <div *ngFor="let comment of comments; let i = index" class="comment">
+      <div class="comment-author">{{ comment.author }}</div>
+      <div class="comment-date">{{ comment.date }}</div>
+      <div class="comment-text">{{ comment.text }}</div>
+      <div class="comment-buttons">
+        <button class="edit" (click)="editComment(i)">Edit</button>
+        <button class="delete" (click)="deleteComment(i)">Delete</button>
+      </div>
+    </div>
+
+    <!-- Add comment form -->
+    <div class="add-comment">
+      <h3>Add a Comment</h3>
+      <form (submit)="submitComment(author.value, comment.value, $event); author.value=''; comment.value=''">
+        <input #author placeholder="Your Name" type="text" required />
+        <textarea #comment placeholder="Your Comment" rows="5" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

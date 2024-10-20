@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { MoreDestinationsComponent } from './more-destinations/more-destinations.component';
 import { OneComponent } from './home/tags/one-component/one-component.component';
 import { DetailComponent } from './detail/detail.component';
+import { BlogCardDetailsComponent } from './blog-card-details/blog-card-details.component';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // إعادة التوجيه إلى الصفحة الرئيسية
@@ -24,5 +26,6 @@ export const routes: Routes = [
   { path: 'user-profile/:id', component: UserProfileComponent, title: 'User Profile' }, // ملف المستخدم
   { path: 'user-profile', component: UserProfileComponent, title: 'User Profile' }, // ملف المستخدم بدون ID
   { path: 'one/:tag', component: OneComponent }, // المسار للكارد الواحد
+  { path: 'blog-card-details/:id', component: BlogCardDetailsComponent },
   { path: '**', component: PageNotFoundComponent } // مسار الصفحة غير الموجودة
 ];

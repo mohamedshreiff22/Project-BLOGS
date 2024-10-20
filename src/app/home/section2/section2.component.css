@@ -7,13 +7,12 @@
   border-radius: 2px;
   margin-top: 2rem;
   box-shadow: 0px 0px 70px rgba(29, 24, 24, 0.09);
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
   cursor: pointer;
 }
 .dest .card:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
   color: #0056b3;
 }
 .dest h2 {
@@ -33,6 +32,7 @@
   align-items: center;
   height: 20vh;
 }
+
 .button {
   position: relative;
   transition: all 0.3s ease-in-out;
@@ -44,29 +44,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffff;
-  gap: 10px;
+  color: #fff;
   font-weight: bold;
-  border: 3px solid #ffffff4d;
-  outline: none;
-  overflow: hidden;
   font-size: 15px;
   cursor: pointer;
 }
-.icon {
-  width: 24px;
-  height: 24px;
-  transition: all 0.3s ease-in-out;
-}
 .button:hover {
   transform: scale(1.05);
-  border-color: #fff9;
-}
-.button:hover .icon {
-  transform: translate(4px);
-}
-.button:hover::before {
-  animation: shine 1.5s ease-out infinite;
 }
 .button::before {
   content: "";
@@ -82,15 +66,74 @@
   top: 0;
   left: -100px;
   opacity: 0.6;
+  transition: left 0.3s ease-in-out;
 }
-@keyframes shine {
-  0% {
-    left: -100px;
-  }
-  60% {
-    left: 100%;
-  }
-  to {
-    left: 100%;
-  }
+
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+  transform: translateY(-100px);
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0);
+}
+
+.modal-body img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+/* تكبير حجم الـ Modal */
+.modal-dialog {
+  max-width: 800px; /* يمكنك تغيير العرض حسب الحاجة */
+  margin: 1.75rem auto;
+}
+
+/* تحسين شكل زر الإغلاق (cancel) */
+.modal-header .btn-close {
+  background-color: transparent; /* إزالة الخلفية الحالية */
+  border: 2px solid #d9d9d9; /* إطار خفيف */
+  border-radius: 50%; /* حواف دائرية */
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #5a5a5a; /* لون النص */
+  transition: all 0.3s ease-in-out;
+}
+
+.modal-header .btn-close:hover {
+  background-color: #f0f0f0; /* خلفية خفيفة عند التمرير */
+  color: #ff1a1a; /* لون عند التمرير */
+  border-color: #ff1a1a; /* تغيير لون الإطار عند التمرير */
+}
+
+
+/* تحسين شكل الأزرار */
+.modal-footer .btn-primary,
+.modal-footer .btn-info {
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #3b5998;
+}
+
+.modal-footer .btn-info:hover {
+  background-color: #1da1f2;
+}
+.card-img-top {
+  width: 100%; /* تجعل الصورة تأخذ العرض الكامل للكارد */
+  height: 200px; /* يمكنك تحديد ارتفاع مناسب */
+  object-fit: cover; /* تجعل الصورة تتناسب مع حجم الكارد بدون تشويه */
+  border-radius: 8px; /* يعطي حواف مدورة للصورة لتبدو أكثر نعومة */
 }

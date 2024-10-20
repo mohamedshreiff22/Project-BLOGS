@@ -94,3 +94,43 @@
     left: 100%;
   }
 }
+/* إضافة حركة الفيد إن مع التباطؤ */
+/* تأثير الفيد إن عند الظهور */
+/* حركة الفيد إن عند إضافة الكاردات */
+/* حركة الفيد إن عند إضافة الكاردات */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* حركة الفيد أوت عند حذف الكاردات */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* تأثير الكارد عند الفيد إن */
+.card {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* عند الحاجة للاختفاء */
+.card.hide {
+  animation: fadeOut 0.3s ease-in-out forwards;
+  -webkit-animation: fadeOut 0.3s ease-in-out forwards;
+}
+

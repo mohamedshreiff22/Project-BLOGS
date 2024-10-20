@@ -87,12 +87,12 @@ export class OneComponent implements OnInit {
 
   getImageUrl() {
     const images = {
-      health: 'assets/place-one.jpg',
-      food: 'assets/gallery-02.jpg',
-      breakfast: 'assets/gallery-03.jpg',
-      snacks: 'assets/gallery-04.jpg',
+      health: 'assets/StockSnap_NKBW9THQYP.jpg',
+      food: 'assets/StockSnap_AOUHXQUXDO.jpg',
+      breakfast: 'assets/StockSnap_4UP8O6XKXQ.jpg',
+      snacks: 'assets/m_Foodie_Girl____MV6Y0SDYXS.jpg',
       lifestyle: 'assets/gallery-05.jpg',
-      chocolate: 'assets/gallery-06.jpg',
+      chocolate: 'assets/m_FRS_Racool_20016.jpg',
     };
     return images[this.tag as keyof typeof images] || 'assets/default.jpg';
   }

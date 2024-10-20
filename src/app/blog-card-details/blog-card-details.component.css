@@ -1,0 +1,119 @@
+.container {
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.meta {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.add-comment input,
+.add-comment textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.add-comment button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-comment button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.comments-section {
+  margin-top: 30px;
+}
+
+.comment {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-author {
+  font-weight: bold;
+  color: #333;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.comment-buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.comment-buttons button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.comment-buttons button.edit {
+  background-color: #007bff;
+  color: white;
+}
+
+.comment-buttons button.edit:hover {
+  background-color: #0056b3;
+}
+
+.comment-buttons button.delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.comment-buttons button.delete:hover {
+  background-color: #c82333;
+}
+.main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* حواف مستديرة */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+  margin-bottom: 20px;
+}

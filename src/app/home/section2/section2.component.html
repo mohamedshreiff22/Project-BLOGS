@@ -2,53 +2,11 @@
   <div class="container">
       <h2 class="heading-tertiary text-center">Popular<span> Destinations</span></h2>
       <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-10 mx-auto">
-              <div class="card" (click)="goToBlogDetails('city-las-vegas')">
-                <img class="card-img-top" src="assets/gallery-01.jpg" alt="Card image cap">
+          <div class="col-lg-4 col-md-6 col-sm-10 mx-auto" *ngFor="let card of cardsData">
+              <div class="card" (click)="openModal(card.title, card.image, card.description)">
+                <img class="card-img-top" [src]="card.image" alt="{{ card.title }}">
                   <div class="text-center">
-                      <p>City, Las Vegas</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-10 mx-auto">
-              <div class="card" (click)="goToBlogDetails('london')">
-                  <img class="card-img-top" src="assets/jakob-owens-Nrf3yY0kxCM-unsplash.jpg" alt="Card image cap">
-                  <div class="text-center">
-                      <p>Queen Elizabeth Tower, London</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-10 mx-auto">
-              <div class="card" (click)="goToBlogDetails('hawaii')">
-                  <img class="card-img-top" src="assets/gallery-03.jpg" alt="Card image cap">
-                  <div class="text-center">
-                      <p>Mountains, Hawaii</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-10 mx-auto">
-              <div class="card" (click)="goToBlogDetails('city-las-vegas')">
-                  <img class="card-img-top" src="assets/gallery-01.jpg" alt="Card image cap">
-                  <div class="text-center">
-                      <p>City, Las Vegas</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-10 mx-auto">
-              <div class="card" (click)="goToBlogDetails('london')">
-                  <img class="card-img-top" src="assets/jakob-owens-Nrf3yY0kxCM-unsplash.jpg" alt="Card image cap">
-                  <div class="text-center">
-                      <p>Queen Elizabeth Tower, London</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-10 mx-auto">
-              <div class="card" (click)="goToBlogDetails('hawaii')">
-                  <img class="card-img-top" src="assets/gallery-03.jpg" alt="Card image cap">
-                  <div class="text-center">
-                      <p>Mountains, Hawaii</p>
+                      <p>{{ card.title }}</p>
                   </div>
               </div>
           </div>
@@ -58,5 +16,33 @@
           Read More
         </button>
       </div>
+      <div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="blogModalLabel">{{ modalTitle }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">✖</button>
+            </div>
+
+                <div class="modal-body">
+                    <img [src]="modalImage" class="img-fluid" alt="{{ modalTitle }}">
+                    <p>{{ modalDescription }}</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                </div>
+                <div class="modal-footer">
+                  <a [href]="facebookShareUrl" target="_blank" class="btn btn-primary">
+                    Share on Facebook
+                  </a>
+                  <a [href]="twitterShareUrl" target="_blank" class="btn btn-info">
+                    Share on Twitter
+                  </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
   </div>
 </section>
